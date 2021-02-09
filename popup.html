@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="lib/fontawesome/css/fontawesome.min.css">
+</head>
+<body style="min-width: 350px;">
+	<div style="width: 100%; text-align: center; background-color: #082E44; padding: 2rem 0; margin-bottom: .5rem">
+		<Image src="/images/logo_sm_white.png" style="width: 70%;"/>
+	</div>
+
+	<div class="p-4">
+		<div id="div_loading" class="text-center">
+			<p id="text-loading">Cargando</p>
+			<div class="spinner-border" role="status">
+				<span class="sr-only">Cargando ...</span>
+			</div>
+		</div>
+
+		<div id="div_user_logout" class="alert alert-danger d-none" role="alert">
+			Para poder acceder debe cerrar sesión en su cuenta de broker
+		</div>
+
+		<div id="form_login" class="d-none">
+			<form id="form_login_user">
+				<div class="form-group">
+					<label for="email">Correo electrónico</label>
+					<input type="email" class="form-control" id="email" aria-describedby="emailHelp">
+				</div>
+				<div class="form-group">
+					<label for="password">Contraseña</label>
+					<input type="password" class="form-control" id="password">
+				</div>
+
+				<button id="btn_submit_login" type="button" class="btn btn-primary btn-block">Ingresar</button>
+
+				<button id="btn_loading" class="btn btn-primary btn-block d-none" type="button" disabled>
+					<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+					Cargando ...
+				</button>
+			</form>
+		</div>
+
+		<div id="options" class="d-none">
+			<p id='msg_start_trading'>Antes de iniciar una sesiòn de trading asegurese de tener una sesión iniciada en su cuenta de broker.</p>
+			<button class="btn btn-block btn-success" id="btn_start_trading">Iniciar Trading</button>
+			<button class="btn btn-block btn-primary" id="btn_disconnect_clients">Desconectar clientes</button>
+			<button class="btn btn-block btn-primary" id="btn_connect_clients">Conectar clientes</button>
+			<button class="btn btn-danger btn-block mt-3" id="btn_logout">Salir</button>
+		</div>
+
+		<div id="trading" class="d-none">
+			<button class="btn btn-block btn-primary mt-3" id="btn_show_controls_trading">Mostrar controles de trading</button>
+			<button class="btn btn-block btn-danger mt-3" id="btn_stop_trading">Detener Trading</button>
+		</div>
+	</div>
+
+	<script src="lib/jquery.min.js"></script>
+	<script src="lib/popper.min.js"></script>
+	<script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="lib/fontawesome/js/all.min.js" data-auto-replace-svg="nest"></script>
+	<script src="lib/fontawesome/js/fontawesome.min.js"></script>
+	<script src="scripts/start_jquery.js"></script>
+	
+	<script src="scripts/popup.js"></script>
+	<script src="scripts/popup/auth.js"></script>
+	<script src="scripts/popup/options.js"></script>
+	<script src="scripts/popup/trading.js"></script>
+</body>
+</html>

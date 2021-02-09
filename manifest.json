@@ -1,0 +1,69 @@
+{
+    "name": "TrSoft Traders",
+    "version": "1.0",
+    "description": "Extensión para traders de TrSoft",
+    "permissions": [
+        "declarativeContent", 
+        "storage",
+        "background",
+        "unlimitedStorage",
+        
+        "cookies",
+        "https://iqoption.com/*",
+        "http://localhost:8000/*",
+        "https://www.trsoft-company.com/*",
+        "https://trsoft-company.uc.r.appspot.com/*"
+    ],
+    "background": {
+        "scripts": [
+            "Backgrounds/trsoft_client_connection.js",
+            "Backgrounds/trsoft_connection.js",
+            "Backgrounds/broker_connection.js",
+            "Backgrounds/background.js"
+        ],
+        "persistent": true
+    },
+    "content_scripts": [
+        {
+            "matches": ["https://iqoption.com/*"],
+            "css": [
+                "lib/fontawesome/css/fontawesome.min.css",
+                "lib/bootstrap/dist/css/bootstrap.min.css"
+            ],
+            "js": [
+                "lib/jquery.min.js",
+                "lib/jquery-ui.js",
+                "lib/popper.min.js",
+                "lib/bootstrap/dist/js/bootstrap.min.js",
+                "lib/fontawesome/js/all.min.js",
+                "lib/fontawesome/js/fontawesome.min.js",
+                "contentScript/trading.js"
+            ]
+        }
+    ],
+    "page_action": {
+        "default_popup": "popup.html",
+        "default_icon": {
+            "16": "images/get_started16.png",
+            "32": "images/get_started32.png",
+            "48": "images/get_started48.png",
+            "128": "images/get_started128.png"
+        }
+    },
+    "icons": {
+        "16": "images/get_started16.png",
+        "32": "images/get_started32.png",
+        "48": "images/get_started48.png",
+        "128": "images/get_started128.png"
+    },
+    "web_accessible_resources": [
+        "trading.html"
+    ],
+    "externally_connectable": {
+        "matches": [
+            "https://iqoption.com/*"
+        ],
+        "accepts_tls_channel_id": false
+    },
+    "manifest_version": 2
+}

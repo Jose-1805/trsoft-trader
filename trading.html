@@ -1,0 +1,194 @@
+<div class="shadow bg-white rounded" id="controls_trading" style="z-index: 1; position: absolute;width: 460px; min-width: 460px; padding: 10px;">
+	<div id='content_maximize' class="row" style="padding-right: 5px;">
+		<div class="col-12 text-right">
+			<a href="#!" id='btn_minimize' style="font-size: small;">Minimizar</a>
+		</div>
+
+		<div class="col-7" style="border-right: 2px solid #ededed;">
+			<div class="custom-control custom-switch">
+				<input type="checkbox" class="custom-control-input" id="start_my_account" checked>
+				<label class="custom-control-label" for="start_my_account">Operar en mi cuenta</label>
+			</div>
+			<div class="custom-control custom-switch">
+				<input type="checkbox" class="custom-control-input" id="practice_account" checked>
+				<label class="custom-control-label" for="practice_account">Operar en cuenta de práctica</label>
+			</div>
+
+			<div class="row mt-3 ml-1 mr-1">
+				<div class="input-group mb-2">
+					<div class="input-group-prepend">
+						<div class="input-group-text">$</div>
+					</div>
+					<input type="number" min="1" class="form-control" id="amount" placeholder="Amount" value="1">
+				</div>
+			</div>
+
+			<div class="row mt-3">
+				<div class="col-1">
+					<i class="far fa-clock text-primary"></i>
+				</div>
+				<div class="col-7">
+					<input type="range" class="custom-range" min="1" max="5" id="range_expiration" value="1">
+				</div>
+				<div class="col-3">
+					<h3 id="text_expiration" class="text-center" style="margin: -5px 0 0; width: 100%;">1</h3>
+				</div>
+			</div>
+
+			<div class="row mt-3">
+				<div class="col-1">
+					<i class="fas fa-calculator text-primary"></i>
+				</div>
+				<div class="col-7">
+					<input type="range" class="custom-range" min="1" max="5" step="0.5" id="range_increase" value="1">
+				</div>
+				<div class="col-3">
+					<h3 id="text_increase" class="text-center" style="margin: -5px 0 0; width: 100%;">1</h3>
+				</div>
+			</div>
+
+			<div class="row d-none p-2" id="action_buttons">
+				<div class="col-6 p-1">
+					<a id="btn_higher" class="disabled text-white btn btn-success btn-block btn-large" disabled style="min-height: 80px; max-height: 80px; max-height: 80px; cursor: pointer; line-height: 70px;">
+						SUBE <i class="text-white fas fa-level-up-alt fa-2x"></i>
+					</a>
+				</div>
+				<div class="col-6 p-1">
+					<a id="btn_lower" class="disabled text-white btn btn-danger btn-block btn-large" disabled style="min-height: 80px; max-height: 80px; max-height: 80px; cursor: pointer; line-height: 70px;">
+						BAJA <i class="text-white fas fa-level-down-alt fa-2x"></i>
+					</a>
+				</div>
+			</div>
+
+			<div class="row mt-3" id="waiting_actives_info">
+				<div class="text-center col-12">
+					<div class="spinner-border text-primary" role="status">
+					  <span class="sr-only">Cargando ...</span>
+					</div>
+				</div>
+				<div class="text-center col-12">
+					<p class="text-center">Esperando información de activos.</p>
+				</div>
+			</div>
+
+			<div class="row p-2">
+				<div class="col-12 pt-2" style="background-color: #f8f7f7;">
+					<div class="row">
+						<div class="col-12">
+							<p>
+								Operaciones abiertas actualmente: 
+								<span style="display: inline;" class="text-secondary" id="text_open_options">0</span>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<ol class="col-5 pl-4" id="actives_list" style="max-height: 355px; height: auto; overflow-y: auto; overflow-x: hidden;">
+
+		</ol>
+	</div>
+
+	<div id='content_minimize' class="row d-none">
+		<div class="col-12">
+
+			<!--<div class="col-6 text-center" style="border-bottom: 2px solid #ededed;" data-toggle="tooltip" title="Amount" data-placement="bottom">
+				<i class="far fa-play-circle text-primary"></i> 
+				<span class='text-secondary'><i class="far fa-play-circle text-primary"></i> 2</span>
+				<h5>
+					<span class="text-secondary" id="text_number_options">0</span>
+				</h5>
+			</div>
+			<div class="col-6 text-center" style="border-bottom: 2px solid #ededed;" data-toggle="tooltip" title="Max. amount" data-placement="bottom">
+				<i class="far fa-check-circle text-success"></i>/
+				<i class="far fa-times-circle text-danger"></i> 
+				<h5 style="line-height: 45px">
+					<span style="display: inline;" class="text-secondary" id="text_number_successful_options">0</span>/
+					<span style="display: inline;" class="text-secondary" id="text_number_failed_options">0</span>
+				</h5>
+			</div>
+			<div class="col-6 text-center" data-toggle="tooltip" title="Stop loss" data-placement="bottom">
+				<i class="far fa-check-circle text-success"></i>%
+				<h5>
+					<span class="text-secondary" id="text_success_rate">0%</span>
+				</h5>
+			</div>
+			<div class="col-6 text-center" data-toggle="tooltip" title="Number of open options" data-placement="bottom">
+				<i class="fas fa-bolt text-info" id="open_options_icon"></i> 
+				<h5>
+					<span class="text-secondary" id="text_open_options">0</span>
+				</h5>
+			</div>-->
+			<div id="info_minimize" style="display: inline;">
+			</div>
+			<span class='text-secondary' style='font-size: small;border-left: 1px solid #ccc; padding: 5px; display: inline;'><i class="fas fa-dollar-sign text-success"></i> <span class="text-secondary" style="display: inline; font-size: medium;" id="text_amount_min">1</span></span>
+			<span class='text-secondary' style='font-size: small;border-left: 1px solid #ccc; padding: 5px; display: inline;'><i class="far fa-clock text-primary"></i> <span class="text-secondary" style="display: inline; font-size: medium;" id="text_expiration_min">1</span></span>
+			<span class='text-secondary' style='font-size: small;border-left: 1px solid #ccc; padding: 5px; display: inline;'><i class="fas fa-calculator text-primary"></i> <span class="text-secondary" style="display: inline; font-size: medium;" id="text_increase_min">1</span></span>
+			<span class='text-secondary' style='font-size: small;border-left: 1px solid #ccc; padding: 5px; display: inline;'><i class="far fa-play-circle text-info"></i> <span class="text-secondary" style="display: inline; font-size: medium;" id="text_open_options_min">0</span></span>
+			<a href="#!" id='btn_maximize' style="font-size: small;float: right;">Max</a>
+		</div>
+		<div class="col-12">
+			<div class="row d-none p-2" id="action_buttons_minimized">
+				<div class="col-6 p-1">
+					<a id="btn_higher_minimized" class="disabled text-white btn btn-success btn-block btn-small" disabled style="cursor: pointer;">
+						SUBE <i class="text-white fas fa-level-up-alt fa-1x"></i>
+					</a>
+				</div>
+				<div class="col-6 p-1">
+					<a id="btn_lower_minimized" class="disabled text-white btn btn-danger btn-block btn-small" disabled style="cursor: pointer;">
+						BAJA <i class="text-white fas fa-level-down-alt fa-1x"></i>
+					</a>
+				</div>
+			</div>
+
+			<div class="row mt-3" id="waiting_actives_info_minimized">
+				<div class="text-center col-12">
+					<div class="spinner-border text-primary" role="status">
+					  <span class="sr-only">Cargando ...</span>
+					</div>
+				</div>
+				<div class="text-center col-12">
+					<p class="text-center">Esperando información de activos.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="row">
+		<div class="col-12">
+			<span class='text-secondary' style='font-size: small; padding: 5px; display: inline;'>
+				<i class="fas fa-history"></i>
+			</span>
+
+			<span class='text-secondary' style='font-size: small; padding: 5px; display: inline;'>
+				<span class="text-secondary" style="display: inline; font-size: medium;" id="expiration_last_operation">--:--</span>
+			</span>
+
+			<span class='' style='font-size: small;border-left: 1px solid #ccc; padding: 5px; display: inline;'>
+				<img id='img_last_operation' src="https://trsoft-company.uc.r.appspot.com/static/images/logo_icon/icon_xs.png" width="18">
+				<div id='direction_last_operation_down' style='display: inline;' class='d-none'>
+					<i class="fas fa-angle-double-down text-danger"></i>
+				</div>
+				<div id='direction_last_operation_up' style='display: inline;' class='d-none'>
+					<i class="fas fa-angle-double-up text-success"></i>
+				</div>
+			</span>
+
+			<span class='text-secondary' style='font-size: small;border-left: 1px solid #ccc; padding: 5px; display: inline;'>
+				<i class="fas fa-check-circle text-success"></i> 
+				<span class="text-secondary" style="display: inline; font-size: medium;" id="win_last_operation">0</span>
+			</span>
+
+			<span class='text-secondary' style='font-size: small;border-left: 1px solid #ccc; padding: 5px; display: inline;'>
+				<i class="fas fa-times-circle text-danger"></i> 
+				<span class="text-secondary" style="display: inline; font-size: medium;" id="lose_last_operation">0</span>
+			</span>
+
+			<span class='text-secondary' style='font-size: small;border-left: 1px solid #ccc; padding: 5px; display: inline;'>
+				<i class="fas fa-circle"></i> 
+				<span class="text-secondary" style="display: inline; font-size: medium;" id="equal_last_operation">0</span>
+			</span>
+		</div>
+	</div>
+</div>
